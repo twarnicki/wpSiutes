@@ -46,3 +46,4 @@ Good luck!
 # wpSiutes
 this is mainy a test repo and mean to create a slick and simple wp template
 yet another diff test3
+ole ole
