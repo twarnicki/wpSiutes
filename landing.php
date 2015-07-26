@@ -9,6 +9,9 @@
 get_header(); ?>
         <div class="jumbotron">
             <div class="container">
+                <div class="widget-area widget-jumbo">
+                    <?php dynamic_sidebar('widget-jumbo'); ?>
+                </div>
                 
             </div>
         </div>

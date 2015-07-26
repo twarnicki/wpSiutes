@@ -22,7 +22,11 @@ header{
 }
 
 
-.content-area , .widget-area{
+.content-area{
+    margin-top: 40px;
+}
+
+#secondary{
     margin-top: 40px;
 }
 
@@ -47,11 +51,9 @@ input{
 .site-title{
     clear:none; 
     font-size: 2em;
-    margin-top: 0.67em;
+    margin-top: 1em;
     font-weight: bold;
     text-color: black;
-        
-    
 }
 
 .site-title a:hover,.site-title a:visited,.site-title a,.site-title a:active{
@@ -61,6 +63,7 @@ input{
 
 .site-description{
     margin-top: 0em;
+    font-size: 1.5em;
 }
 
 .main-navigation{
@@ -90,10 +93,17 @@ input{
     
 
 }
+
 .jumbotron{
-    height:500px;
     background-color: lightblue;
+    padding-top:50px;
+    padding-bottom:50px;
+    background-image: url('http://prawo.szczecin.pl/wordpress/wp-content/uploads/2015/07/baner.png');
+    color:white;
+    font-size:1.1em;
 }
+
+
 
 #primary-menu li a{
     height:80px;
