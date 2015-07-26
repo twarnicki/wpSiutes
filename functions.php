@@ -105,6 +105,16 @@ function siutes_widgets_init() {
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
+        register_sidebar(array(
+            'name'          => 'Top Wideget',
+            'id'            => 'widget-top',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</aside>',
+            //'before_widget' => '<li id="%1$s" class="widget %2$s">',
+            //'after_widget'  => '</li>',
+            'before_title'  => '<h5 class="widgettitle">',
+            'after_title'   => '</h5>',
+        ));
 }
 add_action( 'widgets_init', 'siutes_widgets_init' );
 
@@ -113,6 +123,9 @@ add_action( 'widgets_init', 'siutes_widgets_init' );
  */
 function siutes_scripts() {
 	wp_enqueue_style( 'siutes-style', get_stylesheet_uri() );
+        wp_enqueue_style( 'siutes-layout',get_template_directory_uri() . '/layouts/content-sidebar.css'  );
+        wp_enqueue_style( 'siutes-mods',get_template_directory_uri() . '/siutes.css'  );
+        
 
 	wp_enqueue_script( 'siutes-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
@@ -123,6 +136,22 @@ function siutes_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'siutes_scripts' );
+
+
+function siutes_jumbotron_setup() {
+	add_theme_support( 'jumbotron-image', apply_filters( 'siutes_jumbotron_args', array(
+		'default-image'          => '',
+		'default-text-color'     => '000000',
+		'width'                  => 1024,
+		'height'                 => 300,
+		'flex-height'            => true,
+		'wp-head-callback'       => 'siutes_jumbotron_style',
+		'admin-head-callback'    => 'siutes_admin_jumbotron_style',
+		'admin-preview-callback' => 'siutes_admin_jumbotron_image',
+	) ) );
+}
+add_action( 'after_setup_theme', 'siutes_jumbotron_setup' );
+
 
 /**
  * Implement the Custom Header feature.
