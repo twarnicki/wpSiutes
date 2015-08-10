@@ -128,6 +128,17 @@ function siutes_widgets_init() {
             'after_title'   => '</h2>',
         ));
         
+        register_sidebar(array(
+            'name'          => 'Footerline',
+            'id'            => 'widget-footer',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</aside>',
+            //'before_widget' => '<li id="%1$s" class="widget %2$s">',
+            //'after_widget'  => '</li>',
+            'before_title'  => '<h2 class="widgettitle">',
+            'after_title'   => '</h2>',
+        ));
+        
 }
 add_action( 'widgets_init', 'siutes_widgets_init' );
 
@@ -138,6 +149,8 @@ function siutes_scripts() {
 	wp_enqueue_style( 'siutes-style', get_stylesheet_uri() );
         wp_enqueue_style( 'siutes-layout',get_template_directory_uri() . '/layouts/content-sidebar.css'  );
         wp_enqueue_style( 'siutes-mods',get_template_directory_uri() . '/siutes.css'  );
+        wp_enqueue_style( 'siutes-fa-icons',"//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"  );
+        
         
 
 	wp_enqueue_script( 'siutes-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
@@ -150,7 +163,7 @@ function siutes_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'siutes_scripts' );
 
-
+/*
 function siutes_jumbotron_setup() {
 	add_theme_support( 'jumbotron-image', apply_filters( 'siutes_jumbotron_args', array(
 		'default-image'          => '',
@@ -164,6 +177,23 @@ function siutes_jumbotron_setup() {
 	) ) );
 }
 add_action( 'after_setup_theme', 'siutes_jumbotron_setup' );
+*/
+
+function siutes_theme_customizer( $wp_customize ) {
+    $wp_customize->add_section( 'siutes_jumbotron_bg_section' , array(
+        'title'       => __( 'Jumbotron Background', 'siutes' ),
+        'priority'    => 30,
+        'description' => 'Uplad image for jumbotron background',
+    ) );
+    $wp_customize->add_setting( 'siutes_jumbotron_bg' );
+    
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'siutes_jumbotron_bg', array(
+        'label'    => __( 'Jumbotron Background', 'siutes' ),
+        'section'  => 'siutes_jumbotron_bg_section',
+        'settings' => 'siutes_jumbotron_bg',
+) ) );
+}
+add_action( 'customize_register', 'siutes_theme_customizer' );
 
 
 /**

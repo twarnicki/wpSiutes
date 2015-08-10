@@ -33,5 +33,5 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
-    </div>
+</div>
 <?php get_footer(); ?>

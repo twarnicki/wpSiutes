@@ -3,7 +3,7 @@ Theme Name: Siutes
 Layout: Content-Sidebar
 */
 
-.content-area {
+.site-content #primary {
 	float: left;
 	margin: 0 -33% 0 0;
 	width: 100%;
